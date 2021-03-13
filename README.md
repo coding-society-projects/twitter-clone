@@ -1,6 +1,4 @@
-# Twitter clone experiment 
-
-![social-media](social-media.jpg)
+# Twitter clone experiment
 
 An exercise on Django. Trying to build a simplified clone of Twitter.
 
