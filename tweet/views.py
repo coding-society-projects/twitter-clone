@@ -27,7 +27,8 @@ def feed(request):
     tweets = Tweet.objects.order_by('-post_date')
     context = {
         'tweets': tweets,
-        'form': form
+        'form': form,
+        'user': request.user,
     }
     return render(request, "tweet/feed.html", context)
 
