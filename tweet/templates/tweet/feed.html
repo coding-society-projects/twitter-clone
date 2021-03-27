@@ -1,25 +1,28 @@
-{% extends "tweet/template_base.html" %}
-
-{%  block content %}
-<h1>Home</h1>
+{% extends "tweet/template_tweets.html" %}
 
 
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit">
-</form>
 
-<div>
-    {% for tweet in tweets %}
-        <div style="margin-top: 5px;">
-        <span style="font-weight: bold;">
-            {{ tweet.user.first_name }} {{ tweet.user.last_name }}
-            @{{ tweet.user.username }}
-        </span>
-            <span style="font-size: 0.8em">{{ tweet.post_date }}</span>
-            <br>{{ tweet.content }}
-        </div>
-    {% endfor %}
+{%  block tweets_top %}
+
+<div class="row">
+<div class="col-12 border p-2">
+<h3>Home</h3>
 </div>
+</div>
+
+<div class="row border pb-2">
+    <div class="col-1 pt-3">
+        <img class="rounded-circle" src="https://picsum.photos/id/1005/50">
+    </div>
+    <div class="col-11">
+    <form method="post" action="" class="pl-3 pt-2">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-right">
+        <button type="submit" class="btn btn-outline-primary">Tweet</button>
+        </div>
+    </form>
+    </div>
+</div>
+
 {%  endblock %}

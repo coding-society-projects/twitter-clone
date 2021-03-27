@@ -1,22 +1,8 @@
-{% extends "tweet/template_base.html" %}
-{% block content %}
-    <h1>Profile {{ username }}</h1>
+{% extends "tweet/template_tweets.html" %}
 
-    <div>
-        {% for tweet in tweets %}
-            <div style="margin-top: 5px;">
-                <span style="font-weight: bold;">
-                    {{ tweet.user.first_name }} {{ tweet.user.last_name }}
-                    @{{ tweet.user.username }}
-                </span>
-                <span style="font-size: 0.8em">{{ tweet.post_date }}</span>
-                <br>{{ tweet.content }}
-            </div>
-        {% endfor %}
-        {% if error != "" %}
-            <div style="color: red;">{{ error }}</div>
-        {% endif %}
-    </div>
+{% block tweets_top %}
+    <h1>Profile {{ username }}</h1>
+    
 {%  endblock %}
 
 {% block user_topics %}

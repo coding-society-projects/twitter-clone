@@ -1,0 +1,38 @@
+{% extends "tweet/template_base.html" %}
+
+
+{%  block content %}
+<style>
+    textarea.tweet_form {
+        border: none;
+        background-color: transparent;
+        resize: none;
+        outline: none;
+    }
+</style>
+
+{% block tweets_top %}
+{% endblock %}
+
+<div class="mt-3">
+    {% for tweet in tweets %}
+        <div class="row border">
+        <div class="col-1 pt-3">
+            <img class="rounded-circle" src="https://picsum.photos/id/1005/50">
+        </div>
+        <div class="col-5">
+        <div class="card" style="width: 30rem; border: none;">
+          <div class="card-body">
+            <h5 class="card-title" style="font-size: 1.0em">{{ tweet.user.first_name }} {{ tweet.user.last_name }} @{{ tweet.user.username }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.8em">{{ tweet.post_date }}</h6>
+            <p class="card-text">{{ tweet.content }}</p>
+              <img class="card-img-top" src="https://picsum.photos/id/1015/200/150">
+            <!-- a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a -->
+          </div>
+        </div>
+        </div>
+        </div>
+    {% endfor %}
+</div>
+{%  endblock %}
