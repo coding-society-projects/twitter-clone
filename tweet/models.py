@@ -9,3 +9,7 @@ class Tweet(models.Model):
     blocked = models.BooleanField(default=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='static/media', blank=True)
+
+    def __str__(self):
+        return self.content

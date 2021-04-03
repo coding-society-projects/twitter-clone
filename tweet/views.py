@@ -15,10 +15,11 @@ def index(request):
 @login_required
 def feed(request):
     if request.method == 'POST':
-        form = TweetForm(request.POST)
+        form = TweetForm(request.POST, request.FILES)
         if form.is_valid():
             tweet = Tweet()
             tweet.content = form.cleaned_data['tweet']
+            tweet.image = form.cleaned_data.get('image')
             tweet.user = request.user
             tweet.save()
             form = TweetForm()

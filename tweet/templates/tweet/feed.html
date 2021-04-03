@@ -15,7 +15,7 @@
         <img class="rounded-circle" src="https://picsum.photos/id/1005/50">
     </div>
     <div class="col-11">
-    <form method="post" action="" class="pl-3 pt-2">
+    <form method="post" action="" class="pl-3 pt-2" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="text-right">

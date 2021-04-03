@@ -25,8 +25,10 @@
           <div class="card-body">
             <h5 class="card-title" style="font-size: 1.0em">{{ tweet.user.first_name }} {{ tweet.user.last_name }} @{{ tweet.user.username }}</h5>
             <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.8em">{{ tweet.post_date }}</h6>
-            <p class="card-text">{{ tweet.content }}</p>
-              <img class="card-img-top" src="https://picsum.photos/id/1015/200/150">
+            <p class="card-text">{{ tweet.image }}</p>
+              {% if tweet.image %}
+              <img class="card-img-top" src="/{{ tweet.image }}">
+              {% endif %}
             <!-- a href="#" class="card-link">Card link</a>
             <a href="#" class="card-link">Another link</a -->
           </div>
