@@ -17,7 +17,7 @@
 <div class="mt-3">
     {% for tweet in tweets %}
         <div class="row border">
-        <div class="col-1 pt-3">
+        <div class="col-2 pt-3">
             <img class="rounded-circle" src="https://picsum.photos/id/1005/50">
         </div>
         <div class="col-5">
@@ -25,10 +25,12 @@
           <div class="card-body">
             <h5 class="card-title" style="font-size: 1.0em">{{ tweet.user.first_name }} {{ tweet.user.last_name }} @{{ tweet.user.username }}</h5>
             <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.8em">{{ tweet.post_date }}</h6>
-            <p class="card-text">{{ tweet.image }}</p>
+              <p class="card-text">{{ tweet.content }}</p>
+            <p>
               {% if tweet.image %}
-              <img class="card-img-top" src="/{{ tweet.image }}">
+              <img src="/{{ tweet.image }}" width="200px">
               {% endif %}
+            </p>
             <!-- a href="#" class="card-link">Card link</a>
             <a href="#" class="card-link">Another link</a -->
           </div>

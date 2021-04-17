@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 
 from tweet.forms import TweetForm
-from tweet.models import Tweet
+from tweet.models import Tweet, UserProfile
 
 
 def index(request):
@@ -50,3 +50,11 @@ def profile(request, username):
         "error": error,
     }
     return render(request, 'tweet/profile.html', context)
+
+
+def search(request):
+    search_text = request.GET.get('search-text')
+    context = {'tweets': Tweet.objects.filter(content__contains=search_text),
+               'search_text': search_text,
+               }
+    return render(request, 'tweet/search.html', context)

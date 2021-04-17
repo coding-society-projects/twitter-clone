@@ -21,20 +21,25 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-2 col-1">
-            <ul class="no-bullets">
-                <li><i class="fas fa-home"></i> Home</li>
+        <div class="col-md-2 col-12 col-1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-lignt flex-column float-right">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="no-bullets">
+                  <a><a href="/tweet/feed"><i class="fas fa-home"></i> Home</a></li>
                 <li><i class="fas fa-hashtag"></i> Explore</li>
                 <li><i class="fas fa-bell"></i> Notifications</li>
                  <li><i class="far fa-envelope"></i> Messages</li>
                  <li><i class="far fa-bookmark"></i> Bookmarks</li>
                  <li><i class="fas fa-list-ul"></i> Lists</li>
                 <li><i class="far fa-user"></i> <a href="/profile/{{ user.username }}">Profile</a></li>
-            </ul>
-            <div>
-                @{{ user.username }}<br>
-                <a href="{% url 'logout' %}">Logout</a>
-            </div>
+                <li>@{{ user.username }}</li>
+                  <li><a href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+                </div>
+            </nav>
         </div>
         <div class="col-md-6 col-11">
             {% block content %}
@@ -42,8 +47,8 @@
         </div>
         <div class="col-md-4 d-none d-md-block">
             <div>
-                <form>
-                    <input type="text" placeholder="search">
+                <form action="/tweet/search">
+                    <input type="text" name="search-text" placeholder="search">
                 </form>
             </div>
             What's happening

@@ -13,3 +13,8 @@ class Tweet(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class UserProfile(models.Model):
+    image = models.ImageField(upload_to='static/profile', blank=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
