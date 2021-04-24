@@ -17,13 +17,20 @@
 <div class="mt-3">
     {% for tweet in tweets %}
         <div class="row border">
-        <div class="col-2 pt-3">
-            <img class="rounded-circle" src="https://picsum.photos/id/1005/50">
+        <div class="col-1 pt-3">
+            <a href="/profile/{{ tweet.user.username }}">
+            <img class="rounded-circle" src="/{{ tweet.user.userprofile.image }}" width="40">
+            </a>
         </div>
         <div class="col-5">
         <div class="card" style="width: 30rem; border: none;">
           <div class="card-body">
-            <h5 class="card-title" style="font-size: 1.0em">{{ tweet.user.first_name }} {{ tweet.user.last_name }} @{{ tweet.user.username }}</h5>
+
+            <h5 class="card-title" style="font-size: 1.0em">
+                <a href="/profile/{{ tweet.user.username }}">{{ tweet.user.first_name }}
+                    {{ tweet.user.last_name }} @{{ tweet.user.username }}</a>
+
+            </h5>
             <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.8em">{{ tweet.post_date }}</h6>
               <p class="card-text">{{ tweet.content }}</p>
             <p>
@@ -31,6 +38,22 @@
               <img src="/{{ tweet.image }}" width="200px">
               {% endif %}
             </p>
+            <!-- div class="d-block text-right">...</div -->
+          <div class="dropdown text-right">
+          <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            ...
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {% if tweet.user == user %}
+                <a class="dropdown-item" href="/tweet/delete/{{ tweet.id }}">Delete</a>
+            {% endif %}
+
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+</div>
             <!-- a href="#" class="card-link">Card link</a>
             <a href="#" class="card-link">Another link</a -->
           </div>

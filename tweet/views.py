@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.exceptions import ObjectDoesNotExist
 
 from tweet.forms import TweetForm
@@ -58,3 +58,13 @@ def search(request):
                'search_text': search_text,
                }
     return render(request, 'tweet/search.html', context)
+
+
+def delete_tweet(request, id):
+    tweet = Tweet.objects.filter(id=id).first()
+    user = request.user
+    if tweet.user == user:
+        tweet.delete()
+
+    return redirect('/tweet/feed')
+
